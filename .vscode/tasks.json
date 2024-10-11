@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "Build C++ Executable",
+      "command": "C:\\MSYS2\\ucrt64\\bin\\g++.exe",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "${fileDirname}\\*.cpp",
+        "-o",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Builds the executable."
+    },
+    {
+      "type": "shell",
+      "label": "Run C++ Executable",
+      "command": "cmd",
+      "args": ["/c", "start", "${fileDirname}\\${fileBasenameNoExtension}.exe"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Runs the executable.",
+      "dependsOn": "Build C++ Executable"
+    }
+  ]
+}
