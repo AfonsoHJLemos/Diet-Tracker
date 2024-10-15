@@ -1,37 +1,75 @@
 #include "utils.h"
 
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-void exit(const string &msg) {
+void exit(const std::string &msg) {
   system("cls");
-  cout << msg << endl;
+  std::cout << msg << "\n" << std::endl;
 }
 
 void pressExit() {
-  cout << "Press enter to exit... ";
-  cin.ignore();
-  cin.get();
+  std::cout << "Press Enter To Exit... ";
+  std::cin.ignore();
+  std::cin.get();
+
+  exit("");
+}
+
+std::size_t getOption() {
+  std::size_t option;
+
+  std::cout << "D I E T - T R A C K E R\n"
+               "----- Ingredients -----\n"
+               "| 1 - View            |\n"
+               "| 2 - Add             |\n"
+               "| 3 - Delete          |\n"
+               "-------- Foods --------\n"
+               "| 4 - View            |\n"
+               "| 5 - Add             |\n"
+               "| 6 - Delete          |\n"
+               "-----------------------\n"
+               "| 0 - Exit            |\n"
+               "-----------------------\n"
+            << std::endl;
+
+  do {
+    std::cout << "Option (0-6): ";
+    std::cin >> option;
+  } while (option < 0 || option > 6);
+
+  exit("");
+  return option;
+}
+
+std::size_t getCategory(const std::string &operation) {
+  if (operation == "view")
+    std::cout << "        V I E W        \n";
+  else if (operation == "add")
+    std::cout << "         A D D         \n";
+  else if (operation == "delete")
+    std::cout << "      D E L E T E      \n";
+  else
+    std::cout << " T I T L E   E R R O R \n";
+
+  std::size_t category;
+
+  std::cout << "------ Categories -----\n";
+  showCategories();
+  std::cout << "-----------------------\n"
+               "| 0 - Back            |\n"
+               "-----------------------\n"
+            << std::endl;
+
+  do {
+    std::cout << "Category (0-" << numCategories << "): ";
+    std::cin >> category;
+  } while (category < 0 || category > numCategories);
 
   system("cls");
+  return category;
 }
 
-void printMenu() {
-  cout << "\n";
-  cout << "D I E T - T R A C K E R\n";
-  cout << "----- Ingredients -----\n";
-  cout << "| 1 - View            |\n";
-  cout << "| 2 - Add             |\n";
-  cout << "| 3 - Delete          |\n";
-  cout << "-------- Foods --------\n";
-  cout << "| 4 - View            |\n";
-  cout << "| 5 - Add             |\n";
-  cout << "| 6 - Delete          |\n";
-  cout << "-----------------------\n";
-  cout << "| 0 - Exit            |\n";
-  cout << "-----------------------\n\n";
+void showCategories() {
+  for (std::size_t i = 0; i < numCategories; i++) {
+    std::cout << "| " << i + 1 << " - " << categories[i]
+              << std::string(16 - categories[i].size(), ' ') << "|\n";
+  }
 }
-
-using namespace std;

@@ -1,25 +1,14 @@
-#include <iostream>
-#include <vector>
-
 #include "ingredient.h"
 #include "utils.h"
 
-using namespace std;
-
 int main() {
-  vector<Ingredient> ingredients;
+  std::array<std::vector<Ingredient>, numCategories> ingredients;
   loadIngredients(ingredients);
 
-  int option;
+  std::size_t option;
   do {
-    printMenu();
+    option = getOption();
 
-    do {
-      cout << "Option (0-6): ";
-      cin >> option;
-    } while (option < 0 || option > 6);
-
-    system("cls");
     switch (option) {
       case 1:
         viewIngredients(ingredients);
