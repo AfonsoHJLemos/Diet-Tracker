@@ -12,6 +12,12 @@
 
 enum returns { FAILURE = -1, EXIT = 0, SUCCESS = 1 };
 
+/*
+    If you need to modify the categories, make sure to update the categories
+    array, the getCategory function's arguments in utils.h/utils.cpp and clear
+    the ingredients.bin file.
+*/
+
 const std::array<std::string, 7> categories = {
     "Dairy", "Grain", "Fruit", "Vegetable", "Meat", "Fat", "Snacks"};
 
