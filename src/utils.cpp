@@ -1,8 +1,8 @@
 #include "utils.h"
 
-void exit(const std::string &msg) {
+void clear(const std::string &msg) {
   system("cls");
-  std::cout << msg << "\n" << std::endl;
+  std::cout << msg;
 }
 
 void pressExit() {
@@ -10,13 +10,12 @@ void pressExit() {
   std::cin.ignore();
   std::cin.get();
 
-  exit("");
+  clear("");
 }
 
-std::size_t getOption() {
-  std::size_t option;
-
-  std::cout << "D I E T - T R A C K E R\n"
+int getOption() {
+  std::cout << "\n\n"
+               "D I E T - T R A C K E R\n"
                "----- Ingredients -----\n"
                "| 1 - View            |\n"
                "| 2 - Add             |\n"
@@ -30,16 +29,20 @@ std::size_t getOption() {
                "-----------------------\n"
             << std::endl;
 
+  int option;
   do {
     std::cout << "Option (0-6): ";
     std::cin >> option;
   } while (option < 0 || option > 6);
 
-  exit("");
+  clear("");
   return option;
 }
 
-std::size_t getCategory(const std::string &operation) {
+int getCategory(const std::string &operation,
+                const std::array<std::string, 7> &categories) {
+  std::cout << "\n\n";
+
   if (operation == "view")
     std::cout << "        V I E W        \n";
   else if (operation == "add")
@@ -47,29 +50,23 @@ std::size_t getCategory(const std::string &operation) {
   else if (operation == "delete")
     std::cout << "      D E L E T E      \n";
   else
-    std::cout << " T I T L E   E R R O R \n";
-
-  std::size_t category;
+    std::cout << " W R O N G   T I T L E \n";
 
   std::cout << "------ Categories -----\n";
-  showCategories();
+  for (int i = 0; i < categories.size(); i++)
+    std::cout << "| " << i + 1 << " - " << categories[i]
+              << std::string(16 - categories[i].size(), ' ') << "|\n";
   std::cout << "-----------------------\n"
                "| 0 - Back            |\n"
                "-----------------------\n"
             << std::endl;
 
+  int category;
   do {
-    std::cout << "Category (0-" << numCategories << "): ";
+    std::cout << "Category (0-" << categories.size() << "): ";
     std::cin >> category;
-  } while (category < 0 || category > numCategories);
+  } while (category < 0 || category > categories.size());
 
-  system("cls");
+  clear("");
   return category;
-}
-
-void showCategories() {
-  for (std::size_t i = 0; i < numCategories; i++) {
-    std::cout << "| " << i + 1 << " - " << categories[i]
-              << std::string(16 - categories[i].size(), ' ') << "|\n";
-  }
 }

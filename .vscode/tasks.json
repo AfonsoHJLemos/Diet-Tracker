@@ -10,10 +10,10 @@
         "-g",
         "${fileDirname}\\*.cpp",
         "-o",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+        "${workspaceFolder}\\diet-tracker.exe"
       ],
       "options": {
-        "cwd": "${fileDirname}"
+        "cwd": "${workspaceFolder}"
       },
       "problemMatcher": ["$gcc"],
       "detail": "Builds the executable."
@@ -22,7 +22,7 @@
       "type": "shell",
       "label": "Run C++ Executable",
       "command": "cmd",
-      "args": ["/c", "start", "${fileDirname}\\${fileBasenameNoExtension}.exe"],
+      "args": ["/c", "start", "${workspaceFolder}\\diet-tracker.exe"],
       "group": {
         "kind": "build",
         "isDefault": true

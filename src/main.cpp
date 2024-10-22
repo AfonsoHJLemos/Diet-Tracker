@@ -1,15 +1,14 @@
-#include "ingredient.h"
-#include "utils.h"
+#include "food.h"
 
 int main() {
-  std::array<std::vector<Ingredient>, numCategories> ingredients;
+  std::array<std::vector<Ingredient>, categories.size()> ingredients;
+  std::vector<Food> foods;
+
   loadIngredients(ingredients);
+  loadFoods(foods);
 
-  std::size_t option;
-  do {
-    option = getOption();
-
-    switch (option) {
+  while (true) {
+    switch (getOption()) {
       case 1:
         viewIngredients(ingredients);
         break;
@@ -20,14 +19,18 @@ int main() {
         deleteIngredient(ingredients);
         break;
       case 4:
+        viewFoods(foods);
         break;
       case 5:
+        addFood(foods, ingredients);
         break;
       case 6:
+        deleteFood(foods);
         break;
+      case 0:
+        saveIngredients(ingredients);
+        saveFoods(foods);
+        return 0;
     }
-  } while (option != 0);
-
-  saveIngredients(ingredients);
-  return 0;
+  }
 }

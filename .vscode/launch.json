@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "name": "Debug C++ Executable",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/diet-tracker.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "externalConsole": true,
+      "preLaunchTask": "Build C++ Executable"
+    }
+  ]
+}
