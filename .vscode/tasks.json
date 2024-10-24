@@ -2,15 +2,18 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "cppbuild",
       "label": "Build C++ Executable",
-      "command": "C:\\MSYS2\\ucrt64\\bin\\g++.exe",
+      "type": "shell",
+      "command": "C:/MSYS2/ucrt64/bin/g++.exe",
       "args": [
         "-fdiagnostics-color=always",
         "-g",
-        "${fileDirname}\\*.cpp",
+        "${workspaceFolder}/src/main.cpp",
+        "${workspaceFolder}/src/Food/food.cpp",
+        "${workspaceFolder}/src/Ingredient/ingredient.cpp",
+        "${workspaceFolder}/src/Utils/utils.cpp",
         "-o",
-        "${workspaceFolder}\\diet-tracker.exe"
+        "${workspaceFolder}/diet-tracker.exe"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -19,10 +22,10 @@
       "detail": "Builds the executable."
     },
     {
-      "type": "shell",
       "label": "Run C++ Executable",
+      "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "${workspaceFolder}\\diet-tracker.exe"],
+      "args": ["/c", "start", "${workspaceFolder}/diet-tracker.exe"],
       "group": {
         "kind": "build",
         "isDefault": true
